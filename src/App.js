@@ -5,7 +5,9 @@ import PizzaBlock from './components/PizzaBlock';
 import './scss/app.scss'
 import Pizza from '../src/assets/img/pizza.json'
 
+
 function App() {
+ 
 
   return (
     
@@ -14,10 +16,11 @@ function App() {
       <div className="content">
         <div className="container">
           <ContentTop/>
+          
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
             {
-              Pizza.map((pizza,i ) => <PizzaBlock key={i} {...pizza}/>)
+              Pizza.map((pizza,i ) => <PizzaBlock  key={i} {...pizza}/>)
             }
             
             
