@@ -1,43 +1,30 @@
-import React, { useMemo, useState, useEffect } from 'react';
-import ContentTop from './components/ContentTop';
+import React from "react";
+import FirstP from './pages/FirstP'
 import Header from './components/Header';
-import PizzaBlock from './components/PizzaBlock';
-import './scss/app.scss'
-import Servis from './API/Servis.js'
+import NotFoundPage from "./pages/NotFoundPage";
+import '../src/scss/app.scss'
 
+import {
+  Switch,
+  Route,
+  Link,
+  Routes
+} from "react-router-dom";
+import Cart from "./pages/Cart";
 
-function App() {
- const [Pizza, setPizza] = useState([])
-
- 
-useEffect(()=>{
-Servis.get(setPizza)
-},[])
- 
-
-  
+  function App(){
   return (
     
-      <div className="wrapper">
+    <div className="wrapper">
       <Header/>
-      <div className="content">
-        <div className="container">
-          <ContentTop/>
-          
-          <h2 className="content__title">Все пиццы</h2>
-          <div className="content__items">
-            {
-              Pizza.map((pizza,i ) => <PizzaBlock  key={i} {...pizza}/>)
-            }
-            
-            
-            
-          </div>
-        </div>
-      </div>
+      <Routes>
+        <Route path="/" element={<FirstP/>}/>
+        <Route path="/cart" element={<Cart/>}/>
+        <Route path="*" element={<NotFoundPage/>}/>
+        
+      </Routes>        
     </div>
     
-      
   );
 }
 

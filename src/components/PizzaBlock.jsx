@@ -10,7 +10,7 @@ const PizzaBlock = ({id, imageUrl ,name , types ,siz, price, category ,rating}) 
   const [activtyp, setActivtyp] = useState(0)
   const [activs, setActivs] = useState(0)
   return (
-
+    
     <div className="pizza-block">
   <img
     className="pizza-block__image"
@@ -51,6 +51,7 @@ const PizzaBlock = ({id, imageUrl ,name , types ,siz, price, category ,rating}) 
     </div>
   </div>
 </div>
+
   )
 }
 
