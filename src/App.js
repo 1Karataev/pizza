@@ -1,14 +1,21 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import ContentTop from './components/ContentTop';
 import Header from './components/Header';
 import PizzaBlock from './components/PizzaBlock';
 import './scss/app.scss'
-import Pizza from '../src/assets/img/pizza.json'
+import Servis from './API/Servis.js'
 
 
 function App() {
+ const [Pizza, setPizza] = useState([])
+
+ 
+useEffect(()=>{
+Servis.get(setPizza)
+},[])
  
 
+  
   return (
     
       <div className="wrapper">

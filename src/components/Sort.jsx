@@ -8,7 +8,7 @@ function Sort() {
     setActiv(i);
     setOpen(false)
   }
-  
+ 
   return (
     <div className="sort" >
               <div className="sort__label">
