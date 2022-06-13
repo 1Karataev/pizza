@@ -1,14 +1,20 @@
 import React, {useState} from 'react'
-import '../scss/components/_sort.scss'
-function Sort() {
+import '../scss/components/_sort.scss';
+
+function Sort({sort, onClicksort}) {
   const [open, setOpen] = useState(false)
-  const sort = ['популярности', 'цене','алфавиту']
-  const [activ, setActiv] = useState(0)
+  const sorta = [{
+  name:'Популярности',
+  sortProperty:'rating'},
+  {name:'Цене',
+  sortProperty:'price'},
+  {name:'Алфавиту',
+  sortProperty:'title'}
+]
   const setSelected = (i) =>{
-    setActiv(i);
+    onClicksort(i);
     setOpen(false)
   }
- 
   return (
     <div className="sort" >
               <div className="sort__label">
@@ -25,11 +31,11 @@ function Sort() {
                   />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={()=> setOpen(!open)}>{sort[activ]}</span>
+                <span onClick={()=> setOpen(!open)}>{sort.name}</span>
               </div>
               {open && <div className="sort__popup">
                 <ul>
-                  {sort.map((v,i)=> <li key={i} onClick={()=>setSelected(i)} className={activ === i?'active':''}>{v}</li>)}
+                  {sorta.map((v,i)=> <li key={i} onClick={()=>setSelected(v)} className={sort.sortProperty === v.sortProperty?'active':''}>{v.name}</li>)}
                   
                 </ul>
               </div>}
