@@ -1,14 +1,19 @@
 import React, {useState} from 'react'
 import '../scss/app.scss'
-
+import { useDispatch } from 'react-redux';
+import { setCart } from '../Redux/components/Cart';
 const PizzaBlock = ({id, imageUrl ,name , types ,siz, price, category ,rating}) =>{
   const [num, setNum] = useState(0);
   function numAdd () {
     setNum(num + 1)
   }
+  const dispach = useDispatch()
   const type = ['Тонкое', 'Традиционное']
   const [activtyp, setActivtyp] = useState(0)
   const [activs, setActivs] = useState(0)
+  const addCart = ()=>{
+    dispach(setCart({id, imageUrl,name , types ,siz, price, type: activtyp, size:activs, count: 1}))
+  }
   return (
     
     <div className="pizza-block">
@@ -31,7 +36,7 @@ const PizzaBlock = ({id, imageUrl ,name , types ,siz, price, category ,rating}) 
      
     </ul>
   </div>
-  <div className="pizza-block__bottom">
+  <div onClick={addCart} className="pizza-block__bottom">
     <div className="pizza-block__price">{`от ${price} р`}</div>
     <div className="button button--outline button--add" onClick={numAdd}>
       <svg

@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import '../scss/app.scss'
 import Search from './Search'
 import Sort from './Sort'
-const ContentTop = ({cat , onClickcat, sort , onClicksort}) => {
+const ContentTop = ({cat , onClickcat}) => {
   const categories = ['Все', 'Мясные','Вегетарианская','Гриль','Острые','Закрытые']
   function Activ (n){
     onClickcat(n)
@@ -18,7 +18,7 @@ const ContentTop = ({cat , onClickcat, sort , onClicksort}) => {
                 
               </ul>
             </div>
-            <Sort sort = {sort}  onClicksort = {onClicksort}/>
+            <Sort/>
           </div>
   )
 }

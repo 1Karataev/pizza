@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
 import '../scss/components/_sort.scss';
+import {useSelector, useDispatch} from 'react-redux';
+import {setSort} from '../Redux/components/Filter'
 
-function Sort({sort, onClicksort}) {
+function Sort() {
   const [open, setOpen] = useState(false)
   const sorta = [{
   name:'Популярности',
@@ -11,8 +13,10 @@ function Sort({sort, onClicksort}) {
   {name:'Алфавиту',
   sortProperty:'title'}
 ]
+  const sort = useSelector((state)=>state.filter.sort)
+  const dispach = useDispatch()
   const setSelected = (i) =>{
-    onClicksort(i);
+    dispach(setSort(i))
     setOpen(false)
   }
   return (

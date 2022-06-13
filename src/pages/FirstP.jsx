@@ -1,32 +1,32 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, {  useState, useEffect } from 'react';
 import PizzaBlock from '../components/PizzaBlock';
 import '../scss/app.scss'
 import Servis from '../API/Servis.js'
 import Skeleton from '../components/Skeleton';
 import ContentTop from '../components/ContentTop';
-
+import {useSelector, useDispatch} from 'react-redux'
+import { setCategoryid } from '../Redux/components/Filter';
 export const ContextSearch = React.createContext();
 
 const FirstP = () => {
  const [Pizza, setPizza] = useState([])
  const [fake, setFake] = useState(true)
- const [cat, setCat] = useState(0)
- const [sort,setSort] = useState({
-  name:'Популярности',
-  sortProperty:'rating'
- })
-  const [search, setSearch] = useState('')
+ const {category, sort} = useSelector((state) => state.filter)
+ const [search, setSearch] = useState('')
+ const dispach = useDispatch()
 useEffect( ()=>{
-  Servis.pizza(setPizza,setFake, cat, sort,search)
-},[cat, sort, search])
- 
-   
+  Servis.pizza(setPizza,setFake, category, sort, search)
+},[category, sort, search])
+ const setCat = (id) => {
+  dispach(setCategoryid(id))
+ }
   
+
   return (
     <ContextSearch.Provider value={{search, setSearch}}>
      <div className="content">
         <div className="container">
-          <ContentTop cat = {cat} onClickcat = {setCat} sort = {sort} onClicksort = {setSort} />
+          <ContentTop cat = {category} onClickcat = {(i)=>setCat(i)}/>
           <h2 className="content__title">Все пиццы</h2>
           <div className='content__items-div'>
           <div className="content__items">
