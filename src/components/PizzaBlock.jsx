@@ -12,7 +12,7 @@ const PizzaBlock = ({id, imageUrl ,name , types ,siz, price, category ,rating}) 
   const [activtyp, setActivtyp] = useState(0)
   const [activs, setActivs] = useState(0)
   const addCart = ()=>{
-    dispach(setCart({id, imageUrl,name , types ,siz, price, type: activtyp, size:activs, count: 1}))
+    dispach(setCart({id, imageUrl,name , types ,siz, price, type: type[activtyp], size:siz[activs], count: 1}))
   }
   return (
     
