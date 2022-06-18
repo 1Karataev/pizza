@@ -1,6 +1,6 @@
 import React from 'react'
 import ContentLoader from "react-content-loader"
-function Skeleton() {
+const Skeleton:React.FC = () => {
   return (
       <ContentLoader 
     speed={1}

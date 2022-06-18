@@ -2,8 +2,8 @@ import React, {useState} from 'react'
 import '../scss/app.scss'
 import { useDispatch } from 'react-redux';
 import { setCart } from '../Redux/components/Cart';
-const PizzaBlock = ({id, imageUrl ,name , types ,siz, price, category ,rating}) =>{
-  const [num, setNum] = useState(0);
+const PizzaBlock: React.FC <{id:number, imageUrl:string ,name:string , types:any ,siz:any, price:number, category:string  ,rating:number}> = ({id, imageUrl ,name , types ,siz, price, category ,rating}) =>{
+  const [num, setNum] = useState<number>(0);
   function numAdd () {
     setNum(num + 1)
   }
@@ -26,12 +26,12 @@ const PizzaBlock = ({id, imageUrl ,name , types ,siz, price, category ,rating}) 
   <div className="pizza-block__selector">
     <ul>
       
-      {types.map((typ,i) => <li key={i} onClick = {(()=> setActivtyp(i))} className ={activtyp == i? 'active':''}>{type[typ]}</li>)}
+      {types.map((typ:any, i:number) => <li key={i} onClick = {(()=> setActivtyp(i))} className ={activtyp == i? 'active':''}>{type[typ]}</li>)}
       
       
     </ul>
     <ul>
-      {siz.map((siz,i) => <li key={i} onClick = {(()=> setActivs(i))}  className ={activs == i? 'active':''}>{siz} см.</li>)}
+      {siz.map((siz:number,i:number) => <li key={i} onClick = {(()=> setActivs(i))}  className ={activs == i? 'active':''}>{siz} см.</li>)}
      
      
     </ul>

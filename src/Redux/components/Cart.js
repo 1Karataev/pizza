@@ -23,8 +23,8 @@ export const cartSlice = createSlice({
     const findCart = state.cart.find((obj) => obj.id === action.payload);
    if(findCart){
     findCart.count--
-  }
-   },
+   } 
+  },
    deleteCart(state,action){
      state.cart =  state.cart.filter((v,i,a) => v.id !== action.payload)
    },

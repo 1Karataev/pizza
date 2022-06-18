@@ -3,8 +3,8 @@ import '../scss/components/_sort.scss';
 import {useSelector, useDispatch} from 'react-redux';
 import {setSort} from '../Redux/components/Filter'
 
-function Sort() {
-  const [open, setOpen] = useState(false)
+const  Sort: React.FC = () =>{
+  const [open, setOpen] = useState<boolean>(false)
   const sorta = [{
   name:'Популярности',
   sortProperty:'rating'},
@@ -13,9 +13,9 @@ function Sort() {
   {name:'Алфавиту',
   sortProperty:'title'}
 ]
-  const sort = useSelector((state)=>state.filter.sort)
+  const sort = useSelector((state:any)=>state.filter.sort)
   const dispach = useDispatch()
-  const setSelected = (i) =>{
+  const setSelected = (i:{name:string, sortProperty:string}) =>{
     dispach(setSort(i))
     setOpen(false)
   }

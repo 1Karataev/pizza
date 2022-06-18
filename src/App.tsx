@@ -5,7 +5,6 @@ import NotFoundPage from "./pages/NotFoundPage";
 import '../src/scss/app.scss'
 
 import {
-  Switch,
   Route,
   Link,
   Routes

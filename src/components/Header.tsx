@@ -5,10 +5,10 @@ import {useSelector} from 'react-redux'
 import {
   Link,
 } from "react-router-dom";
-const Header = ()=>{
-  const cart = useSelector((state)=> state.cart.cart)
-  const sum = cart.reduce((pre,obj) => pre + obj.price * obj.count, 0)
-  const total = cart.reduce((pre)=>pre + 1 ,0)
+const Header: React.FC = ()=>{
+  const cart = useSelector((state:any)=> state.cart.cart)
+  const sum = cart.reduce((pre:number,obj:any) => pre + obj.price * obj.count, 0)
+  const total = cart.reduce((pre:number)=>pre + 1 ,0)
   return(
     <div className="header">
         <div className="container">

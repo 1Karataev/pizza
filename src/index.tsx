@@ -10,7 +10,12 @@ import {
 import { store } from './Redux/store'
 import { Provider } from 'react-redux'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const rootElem = document.getElementById('root')
+
+if(rootElem){
+
+const root = ReactDOM.createRoot(rootElem);
+
 root.render(
   <Provider store = {store}>
   <React.StrictMode>
@@ -20,6 +25,6 @@ root.render(
   </React.StrictMode>
   </Provider>
 );
-
+}
 
 reportWebVitals();

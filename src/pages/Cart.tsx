@@ -6,14 +6,15 @@ import {
 import CartinBasket from '../components/CartinBasket';
 import { useDispatch, useSelector } from 'react-redux';
 import { deletAll } from '../Redux/components/Cart';
-const Cart = () => {
-const items = useSelector((state)=> state.cart.cart)
+import NotFoundPage from './NotFoundPage';
+const Cart: React.FC = () => {
+const items = useSelector((state: any)=> state.cart.cart)
 const dispach = useDispatch()
 const deleteCart = () =>{
   dispach(deletAll())
 }
-const sum = items.reduce((pre,obj) => pre + obj.price * obj.count, 0)
-const allp =  items.reduce((pre,obj) => pre +  obj.count, 0)
+const sum = items.reduce((pre:number,obj:any) => pre + obj.price * obj.count, 0)
+const allp =  items.reduce((pre:number,obj:any) => pre +  obj.count, 0)
   return (
     <div className='content'>
     <div className='container'>
@@ -37,8 +38,8 @@ const allp =  items.reduce((pre,obj) => pre +  obj.count, 0)
               </div>
             </div>
             <div className="content__cart">
-             {
-            items.map((pizza,i) => <CartinBasket {...pizza} key={i}/>)
+             {!sum? <NotFoundPage/>
+             : items.map((pizza: any,i:number) => <CartinBasket {...pizza} key={i}/>)
             }
 </div>
 

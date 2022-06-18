@@ -1,6 +1,7 @@
 import React from 'react'
-import style from '../scss/components/NotFoundPage.module.scss'
-const NotFoundPage= ()=> {
+import  style  from '../scss/components/NotFoundPage.module.scss'
+
+const NotFoundPage: React.FC = ()=> {
   return (
     <div className={style.root}>
       <h1>

@@ -2,9 +2,11 @@ import React,{useState} from 'react'
 import '../scss/app.scss'
 import Search from './Search'
 import Sort from './Sort'
-const ContentTop = ({cat , onClickcat}) => {
+
+type ContentProps = {cat:number, onClickcat:any}
+const ContentTop:React.FC<ContentProps> = ({cat , onClickcat}) => {
   const categories = ['Все', 'Мясные','Вегетарианская','Гриль','Острые','Закрытые']
-  function Activ (n){
+  function Activ (n:any){
     onClickcat(n)
   }
   return (
