@@ -1,18 +1,21 @@
 import React, {useState} from 'react'
 import '../scss/app.scss'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import { setCart } from '../Redux/components/Cart';
-const PizzaBlock: React.FC <{id:number, imageUrl:string ,name:string , types:any ,siz:any, price:number, category:string  ,rating:number}> = ({id, imageUrl ,name , types ,siz, price, category ,rating}) =>{
+import { RootState } from '../Redux/store';
+const PizzaBlock: React.FC <{id:number, imageUrl:string,types:any, siz:any ,name:string , price:number, category:string  ,rating:number}> = ({id, imageUrl ,types, siz, name , price, category ,rating}) =>{
   const [num, setNum] = useState<number>(0);
-  function numAdd () {
-    setNum(num + 1)
-  }
   const dispach = useDispatch()
   const type = ['Тонкое', 'Традиционное']
-  const [activtyp, setActivtyp] = useState(0)
-  const [activs, setActivs] = useState(0)
+  const [activtyp, setActivtyp] = useState<number>(0)
+  const [activs, setActivs] = useState<number>(0)
+  const cart = useSelector((state:RootState)=>state.cart.cart)
+  const currentCart = cart.find((obj) =>obj.id == id)
   const addCart = ()=>{
-    dispach(setCart({id, imageUrl,name , types ,siz, price, type: type[activtyp], size:siz[activs], count: 1}))
+    dispach(setCart({id, imageUrl,name , price, type: type[activtyp], size:siz[activs], count: num}))
+  }
+   function numAdd () {
+    setNum(num + 1)
   }
   return (
     
@@ -52,7 +55,7 @@ const PizzaBlock: React.FC <{id:number, imageUrl:string ,name:string , types:any
         />
       </svg>
       <span>Добавить</span>
-      <i>{num}</i>
+      <i>{currentCart?.count? currentCart.count:num}</i>
     </div>
   </div>
 </div>

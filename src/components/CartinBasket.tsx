@@ -7,7 +7,7 @@ type BasketProps = {id: number, imageUrl:string, name:string , price: number, ty
  const CartinBasket:React.FC<BasketProps> = ({id, imageUrl,name , price, type, size, count}) => {
  const dispach = useDispatch()
   const minus = ()=>{
-    count > 0? dispach(setMinusCart(id))
+    count > 1? dispach(setMinusCart(id))
     : dispach(deleteCart(id))
     
   }

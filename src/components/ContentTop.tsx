@@ -3,10 +3,10 @@ import '../scss/app.scss'
 import Search from './Search'
 import Sort from './Sort'
 
-type ContentProps = {cat:number, onClickcat:any}
+type ContentProps = {cat:number, onClickcat:(i:number)=>void}
 const ContentTop:React.FC<ContentProps> = ({cat , onClickcat}) => {
   const categories = ['Все', 'Мясные','Вегетарианская','Гриль','Острые','Закрытые']
-  function Activ (n:any){
+  function Activ (n:number){
     onClickcat(n)
   }
   return (

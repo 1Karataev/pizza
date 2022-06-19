@@ -9,7 +9,7 @@ const searchDe = useCallback(
   debounce((e)=>{
     setSearch(e)
   },300) ,[])
-const setSearchValue = (e:any) =>{
+const setSearchValue = (e:React.ChangeEvent<HTMLInputElement>) =>{
   setValue(e.target.value)
   searchDe(e.target.value)
 }

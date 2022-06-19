@@ -1,14 +1,23 @@
-import React from "react";
+import React,{useEffect, useRef} from "react";
 import '../scss/app.scss'
 import logosvg from '../assets/img/pizza-logo.svg'
 import {useSelector} from 'react-redux'
 import {
   Link,
 } from "react-router-dom";
+import { RootState } from "../Redux/store";
 const Header: React.FC = ()=>{
-  const cart = useSelector((state:any)=> state.cart.cart)
-  const sum = cart.reduce((pre:number,obj:any) => pre + obj.price * obj.count, 0)
+  const cart = useSelector((state:RootState)=> state.cart.cart)
+  const sum = cart.reduce((pre:number,obj) => pre + obj.price * obj.count, 0)
   const total = cart.reduce((pre:number)=>pre + 1 ,0)
+  const isMounted = useRef(false)
+  React.useEffect(()=>{
+    if(isMounted.current){
+      const json = JSON.stringify(cart)
+      localStorage.setItem('cart', json)
+    }
+     isMounted.current = true
+  },[cart])
   return(
     <div className="header">
         <div className="container">
