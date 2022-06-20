@@ -18,7 +18,7 @@ import Cart from "./pages/Cart";
     <div className="wrapper">
       <Header/>
       <Routes>
-        <Route path="/" element={<FirstP/>}/>
+        <Route path="/pizza" element={<FirstP/>}/>
         <Route path="/cart" element={<Cart/>}/>
         <Route path="*" element={<NotFoundPage/>}/>
         
